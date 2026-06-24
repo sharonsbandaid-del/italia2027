@@ -771,17 +771,17 @@ const days = [
   { d:1, date:'2/25', week:'週二', city:'台北 ✈️ 米蘭', items:[
     { time:'23:30', type:'transport', icon:'✈️', title:'長榮 BR095 台北 → 米蘭',
       route:{from:'台北桃園 T2 (TPE)', to:'米蘭 Malpensa (MXP)'},
-      flight:'BR095', cabin:'豪華經濟艙', duration:'飛行約 13 小時',
+      flight:'BR095', cabin:'豪華經濟艙', duration:'飛行約 13 小時', book:true,
       note:'桃園機場第二航廈 ｜ 持極致無限卡前往長榮專屬櫃檯報到，免費使用 The Garden 貴賓室' }
   ]},
   { d:2, date:'2/26', week:'週三', city:'米蘭 → 威尼斯', items:[
     { time:'06:00', type:'transport', icon:'✈️', title:'抵達米蘭 Malpensa (MXP) 機場', note:'出關取行李，入境義大利' },
     { time:'07:43', type:'train', icon:'🚂', title:'Malpensa Express 機場快線 → 米蘭中央車站',
-      route:{from:'Malpensa Airport', to:'Milano Centrale'}, duration:'車程 50 分鐘', cost:'€13' },
+      route:{from:'Malpensa Airport', to:'Milano Centrale'}, duration:'車程 50 分鐘', cost:'€13', book:true },
     { time:'08:35', type:'restaurant', icon:'☕️', title:'米蘭中央車站內咖啡廳早餐',
       dishes:[], note:'享用早餐、休息與梳洗，準備搭高鐵' },
     { time:'10:45', type:'train', icon:'🚂', title:'Frecciarossa 高鐵 米蘭 → 威尼斯',
-      route:{from:'Milano Centrale', to:'Venezia Santa Lucia'}, duration:'車程 2.5 小時' },
+      route:{from:'Milano Centrale', to:'Venezia Santa Lucia'}, duration:'車程 2.5 小時', book:true },
     { time:'13:15', type:'hotel', icon:'🏨', title:'Check-in 威尼斯飯店，放置行李',
       hotelName:'Hotel Santa Chiara 或 AC Hotel Venezia（Santa Chiara / Piazzale Roma 區）',
       extra:'預算 NT$4,000–10,000 / 晚', stayKey:'D2_hotel', note:'步行 3 分鐘至飯店' },
@@ -831,7 +831,7 @@ const days = [
     { time:'11:00', type:'hotel', icon:'🏨', title:'飯店退房，步行至 Santa Lucia 火車站',
       note:'步行約 5 分鐘', stayKey:'D2_hotel' },
     { time:'11:26', type:'train', icon:'🚂', title:'Frecciarossa 高鐵 威尼斯 → 佛羅倫斯',
-      route:{from:'Venezia Santa Lucia', to:'Firenze Santa Maria Novella'}, duration:'車程 2 小時', cost:'€25–50' },
+      route:{from:'Venezia Santa Lucia', to:'Firenze Santa Maria Novella'}, duration:'車程 2 小時', cost:'€25–50', book:true },
     { time:'13:30', type:'hotel', icon:'🏨', title:'Check-in 佛羅倫斯飯店，放置行李',
       hotelName:'FH55 Hotel Calzaiuoli 或 c-hotels Ambasciatori（聖母百花大教堂或火車站周邊）',
       extra:'預算 NT$4,000–10,000 / 晚', stayKey:'D4_hotel' },
@@ -873,7 +873,7 @@ const days = [
   ]},
   { d:6, date:'3/2', week:'週日', city:'佛羅倫斯 ↔ 比薩', items:[
     { time:'09:30', type:'train', icon:'🚂', title:'火車 佛羅倫斯 → 比薩',
-      route:{from:'Firenze Santa Maria Novella', to:'Pisa Centrale'}, duration:'車程 1 小時', cost:'€9' },
+      route:{from:'Firenze Santa Maria Novella', to:'Pisa Centrale'}, duration:'車程 1 小時', cost:'€9', book:true },
     { time:'11:00', type:'attraction', icon:'🏛️', title:'比薩斜塔趣味借位拍照與攀頂',
       price:'€20', hours:'09:00–20:00',
       maps:'https://maps.google.com/?q=Leaning+Tower+of+Pisa', note:'📌 須提前線上預約，名額有限！' },
@@ -882,7 +882,7 @@ const days = [
     { time:'13:00', type:'restaurant', icon:'🍽️', title:'午餐：比薩奇蹟廣場附近餐館',
       dishes:[{zh:'比薩在地料理', it:'Cucina Pisana'}] },
     { time:'14:30', type:'train', icon:'🚂', title:'火車 比薩 → 佛羅倫斯',
-      route:{from:'Pisa Centrale', to:'Firenze Santa Maria Novella'}, duration:'車程 1 小時', cost:'€9' },
+      route:{from:'Pisa Centrale', to:'Firenze Santa Maria Novella'}, duration:'車程 1 小時', cost:'€9', book:true },
     { time:'16:00', type:'walk', icon:'🛍️', title:'聖十字聖殿周邊散步、自由購物',
       note:'達文西、米開朗基羅、伽利略均葬於聖十字聖殿' },
     { time:'19:30', type:'restaurant', icon:'🍽️', title:'晚餐：Osteria dell\'Enoteca',
@@ -1008,7 +1008,7 @@ const days = [
     { time:'11:00', type:'hotel', icon:'🏨', title:'返回飯店取行李，前往羅馬火車站',
       stayKey:'D9_hotel' },
     { time:'12:00', type:'train', icon:'🚂', title:'Frecciarossa 高鐵 羅馬 → 米蘭（車上享用輕食午餐）',
-      route:{from:'Roma Termini', to:'Milano Centrale'}, duration:'車程 3 小時', cost:'€50–80' },
+      route:{from:'Roma Termini', to:'Milano Centrale'}, duration:'車程 3 小時', cost:'€50–80', book:true },
     { time:'15:30', type:'hotel', icon:'🏨', title:'抵達米蘭，Check-in 放置行李',
       hotelName:'Hotel Indigo Milan - Corso Monforte 或 Starhotels Rosa Grand（Brera 區或市中心）',
       extra:'預算 NT$4,000–10,000 / 晚', stayKey:'D12_hotel' },
@@ -1048,7 +1048,7 @@ const days = [
       note:'前往 Global Blue 或 Premier Tax Free 櫃台辦理退稅' },
     { time:'11:00', type:'transport', icon:'✈️', title:'長榮 BR096 米蘭 → 台北',
       route:{from:'米蘭 Malpensa (MXP)', to:'台北桃園 (TPE)'},
-      flight:'BR096', cabin:'豪華經濟艙', duration:'預計次日抵達台北',
+      flight:'BR096', cabin:'豪華經濟艙', duration:'預計次日抵達台北', book:true,
       note:'🏠 帶著滿滿的回憶與伴手禮踏上歸途，Arrivederci Italia！' }
   ]}
 ];
@@ -1121,7 +1121,7 @@ days.forEach((day, idx) => {
       + '<span class="tl-toggle">▾</span>';
 
     // 訂票按鈕（note 含 📌 的項目）
-    const needsBooking = item.note && item.note.indexOf('📌') >= 0;
+    const needsBooking = item.book || (item.note && item.note.indexOf('📌') >= 0);
     if (needsBooking) {
       const bookKey = 'book_d' + day.d + '_' + i;
       const isBooked = localStorage.getItem(bookKey) === '1';
