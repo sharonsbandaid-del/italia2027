@@ -73,7 +73,7 @@ header {
   position: fixed; top: 0; left: 0;
   width: 100%; height: 100vh;
   object-fit: cover;
-  object-position: center top;
+  object-position: center 42%;
   filter: contrast(1.05) brightness(1.0);
   z-index: -1;
 }
@@ -199,10 +199,20 @@ header h1 em {
   padding: 28px 16px 80px;
 }
 
+/* Content area frosted backdrop */
+#panels {
+  background: rgba(0,100,160,0.18);
+  backdrop-filter: blur(0px);
+  min-height: 60vh;
+}
+
 .day-header {
   margin-bottom: 24px; padding-bottom: 14px;
   border-bottom: 3px solid var(--black);
   display: flex; align-items: baseline; gap: 14px;
+  background: rgba(255,248,231,0.85);
+  border-radius: 8px;
+  padding: 10px 14px 14px;
 }
 .day-num-badge {
   font-size: 0.65rem; font-weight: 900;
@@ -265,7 +275,7 @@ header h1 em {
    CARDS  (alternating pink / cream)
 ───────────────────────────── */
 .tl-card {
-  background: var(--cream);
+  background: #fff8e7;
   border: 2.5px solid var(--black);
   border-radius: 8px;
   overflow: hidden;
