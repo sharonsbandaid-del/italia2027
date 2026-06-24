@@ -1115,7 +1115,7 @@ days.forEach((day, idx) => {
 
     // 判斷是否需要訂票（note 含 📌）
     const needsBooking = item.note && item.note.includes('📌');
-    const bookKey = `book_d${dayData.d}_${i}`;
+    const bookKey = `book_d${day.d}_${i}`;
     const isBooked = localStorage.getItem(bookKey) === '1';
 
     const hdr = document.createElement('div');
