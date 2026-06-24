@@ -73,15 +73,15 @@ header {
   width: 100%; height: 100%;
   object-fit: cover;
   object-position: center 42%;
-  filter: contrast(1.05) brightness(1.0);
+  filter: brightness(1.1) saturate(1.15);
 }
 .header-overlay {
   position: absolute; inset: 0;
   background: linear-gradient(
     180deg,
     transparent 0%,
-    transparent 65%,
-    rgba(0,80,120,0.5) 100%
+    transparent 80%,
+    rgba(0,150,199,0.3) 100%
   );
 }
 
@@ -199,7 +199,13 @@ header h1 em {
 }
 
 #panels {
-  background: #0082b0;
+  background: linear-gradient(
+    180deg,
+    #0096c7 0%,
+    #00b4e0 30%,
+    #0096c7 70%,
+    #007aaa 100%
+  );
   min-height: 60vh;
 }
 
@@ -207,8 +213,8 @@ header h1 em {
   margin-bottom: 24px; padding-bottom: 14px;
   border-bottom: 3px solid var(--black);
   display: flex; align-items: baseline; gap: 14px;
-  background: rgba(255,248,231,0.85);
-  border-radius: 8px;
+  background: rgba(255,244,210,0.92);
+  border-radius: 10px;
   padding: 10px 14px 14px;
 }
 .day-num-badge {
@@ -237,7 +243,7 @@ header h1 em {
   content: '';
   position: absolute; left: 10px; top: 0; bottom: 0;
   width: 3px;
-  background: var(--black);
+  background: rgba(255,255,255,0.5);
 }
 
 /* ─────────────────────────────
@@ -254,7 +260,7 @@ header h1 em {
 .tl-dot {
   position: absolute; left: -22px; top: 15px;
   width: 14px; height: 14px; border-radius: 50%;
-  background: var(--cream); border: 3px solid var(--black);
+  background: #ffe44d; border: 3px solid #1a1a2e;
   transition: all 0.15s; z-index: 1;
 }
 .tl-item:hover .tl-dot { background: var(--yellow); transform: scale(1.2); }
