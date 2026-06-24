@@ -10,17 +10,19 @@
 
 /* ─── VARS: CITY POP RETRO ─── */
 :root {
-  --bg:      #ff4f2c;
-  --bg2:     #e8401f;
-  --pink:    #ffc2e9;
-  --cream:   #fcf2f0;
-  --black:   #1e1b1b;
-  --ink:     #2a2525;
+  --bg:      #0096c7;
+  --bg2:     #0077a3;
+  --pink:    #ff6eb4;
+  --cream:   #fff8e7;
+  --black:   #1a1a2e;
+  --ink:     #1a1a2e;
   --red:     #ff4f2c;
-  --accent:  #ffc2e9;
+  --accent:  #ffe44d;
   --yellow:  #ffe44d;
-  --border:  rgba(30,27,27,0.15);
-  --border2: rgba(30,27,27,0.35);
+  --teal:    #00b4d8;
+  --coral:   #ff6b47;
+  --border:  rgba(26,26,46,0.18);
+  --border2: rgba(26,26,46,0.4);
 }
 
 /* ─── GRAIN OVERLAY ─── */
@@ -70,32 +72,33 @@ header {
   width: 100%; height: 100%;
   object-fit: cover;
   object-position: center 45%;
-  filter: saturate(0.6) contrast(1.1) brightness(0.7) sepia(0.2);
-  mix-blend-mode: multiply;
+  filter: saturate(1.1) contrast(1.05) brightness(0.95);
+  mix-blend-mode: normal;
 }
 .header-overlay {
   position: absolute; inset: 0;
   background:
-    linear-gradient(135deg,
-      rgba(255,196,77,0.7) 0%,
-      rgba(255,79,44,0.5) 40%,
-      rgba(255,194,233,0.6) 100%);
+    conic-gradient(from 270deg at 50% 120%,
+      #ffe44d 0deg, #ffe44d 20deg,
+      #0096c7 20deg, #0096c7 40deg,
+      #ffe44d 40deg, #ffe44d 60deg,
+      #0096c7 60deg, #0096c7 80deg,
+      #ffe44d 80deg, #ffe44d 100deg,
+      #0096c7 100deg, #0096c7 120deg,
+      #ffe44d 120deg, #ffe44d 140deg,
+      #0096c7 140deg, #0096c7 160deg,
+      #ffe44d 160deg, #ffe44d 180deg,
+      #0096c7 180deg);
+  opacity: 0.9;
 }
 
 /* checkerboard strip at top */
 .italy-stripe {
   position: absolute; top: 0; left: 0; right: 0;
   height: 18px; z-index: 5;
-  background-image:
-    repeating-linear-gradient(
-      90deg,
-      #1e1b1b 0px, #1e1b1b 18px,
-      #ffc2e9 18px, #ffc2e9 36px,
-      #1e1b1b 36px, #1e1b1b 54px,
-      #ffe44d 54px, #ffe44d 72px,
-      #1e1b1b 72px, #1e1b1b 90px,
-      #fcf2f0 90px, #fcf2f0 108px
-    );
+  background: linear-gradient(90deg,
+      #009246 0% 33.3%, #fff 33.3% 66.6%, #ce2b37 66.6% 100%);
+  height: 6px;
 }
 
 /* header text */
@@ -109,19 +112,18 @@ header h1 {
   font-family: inherit;
   font-size: clamp(2rem, 6vw, 3.4rem);
   font-weight: 900;
-  color: var(--black);
+  color: #ffe44d;
   letter-spacing: -0.01em;
   line-height: 1;
   text-transform: uppercase;
-  /* bold outline on cream */
-  -webkit-text-stroke: 2px #1e1b1b;
+  -webkit-text-stroke: 2px #1a1a2e;
   paint-order: stroke fill;
 }
 header h1 em {
   font-style: italic;
   color: var(--cream);
-  -webkit-text-stroke: 2px #1e1b1b;
-  text-shadow: 3px 3px 0 #1e1b1b;
+  -webkit-text-stroke: 2px #1a1a2e;
+  text-shadow: 3px 3px 0 #1a1a2e;
 }
 .header-meta {
   margin-top: 10px;
@@ -132,15 +134,15 @@ header h1 em {
   font-size: 0.72rem; font-weight: 900;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--black);
-  background: var(--cream);
-  border: 2px solid var(--black);
+  color: #1a1a2e;
+  background: #ffe44d;
+  border: 2px solid #1a1a2e;
   padding: 3px 10px;
   border-radius: 99px;
 }
 .header-meta .red-tag {
-  background: var(--black);
-  color: var(--yellow);
+  background: #ff6b47;
+  color: #fff;
 }
 
 /* scanline decoration */
@@ -160,9 +162,9 @@ header h1 em {
 ───────────────────────────── */
 .tabs-wrapper {
   position: sticky; top: 0; z-index: 100;
-  background: var(--black);
-  border-bottom: 4px solid var(--black);
-  box-shadow: 0 4px 0 var(--pink);
+  background: #1a1a2e;
+  border-bottom: 4px solid #1a1a2e;
+  box-shadow: 0 4px 0 #ffe44d;
 }
 .tabs {
   display: flex;
@@ -280,7 +282,8 @@ header h1 em {
   box-shadow: 5px 5px 0 var(--black);
 }
 /* alternate pink */
-.tl-item:nth-child(even) .tl-card { background: var(--pink); }
+.tl-item:nth-child(even) .tl-card { background: #fff0a0; }
+.tl-item:nth-child(3n) .tl-card { background: #ffe0f0; }
 
 /* left accent stripe by type */
 .tl-card::after {
@@ -453,8 +456,8 @@ footer {
   position: relative; z-index: 2;
   text-align: center; padding: 20px;
   font-size: 0.7rem; color: rgba(30,27,27,0.6);
-  background: var(--black);
-  color: var(--pink);
+  background: #1a1a2e;
+  color: #ffe44d;
   border-top: 4px solid var(--black);
   letter-spacing: 0.14em; text-transform: uppercase; font-weight: 900;
 }
@@ -526,7 +529,7 @@ footer {
   setTimeout(resize, 600);
   resize();
 
-  const COLORS = ['#ffc2e9','#fcf2f0','#ffe44d','#1e1b1b','#a8d8ff','#ff4f2c'];
+  const COLORS = ['#ffe44d','#ff6eb4','#00b4d8','#ff6b47','#ffffff','#a8edff'];
   const NUM = 40;
   const dots = [];
   for (let i = 0; i < NUM; i++) {
@@ -1061,7 +1064,7 @@ days.forEach((day, idx) => {
     wrap.style.animationDelay = `${0.03 * i}s`;
 
     const dot  = document.createElement('div'); dot.className  = 'tl-dot';
-    const card = document.createElement('div'); card.className = 'tl-card';
+    const card = document.createElement('div'); card.className = 'tl-card collapsed';
 
     const hdr = document.createElement('div');
     hdr.className = 'tl-header';
