@@ -1113,23 +1113,41 @@ days.forEach((day, idx) => {
     };
     if (TYPE_BG[item.type]) card.style.background = TYPE_BG[item.type];
 
-    // 判斷是否需要訂票（note 含 📌）
-    const needsBooking = item.note && item.note.includes('📌');
-    const bookKey = `book_d${day.d}_${i}`;
-    const isBooked = localStorage.getItem(bookKey) === '1';
-
     const hdr = document.createElement('div');
     hdr.className = 'tl-header';
-    const bookBtnHtml = needsBooking ? `
-      <button class="book-btn${isBooked ? ' booked' : ''}" data-key="${bookKey}" title="${isBooked ? '已訂票 ✓' : '尚未訂票，點擊確認'}">
-        ${isBooked ? '✓' : '📌'}
-      </button>` : '';
-    hdr.innerHTML = `
-      <span class="tl-time">${item.time}</span>
-      <span class="tl-icon">${item.icon}</span>
-      <span class="tl-title">${item.title}</span>
-      ${bookBtnHtml}
-      <span class="tl-toggle">▾</span>`;
+    hdr.innerHTML = '<span class="tl-time">' + item.time + '</span>'
+      + '<span class="tl-icon">' + item.icon + '</span>'
+      + '<span class="tl-title">' + item.title + '</span>'
+      + '<span class="tl-toggle">▾</span>';
+
+    // 訂票按鈕（note 含 📌 的項目）
+    const needsBooking = item.note && item.note.indexOf('📌') >= 0;
+    if (needsBooking) {
+      const bookKey = 'book_d' + day.d + '_' + i;
+      const isBooked = localStorage.getItem(bookKey) === '1';
+      const btn = document.createElement('button');
+      btn.className = 'book-btn' + (isBooked ? ' booked' : '');
+      btn.dataset.key = bookKey;
+      btn.title = isBooked ? '已訂票 ✓' : '尚未訂票，點擊確認';
+      btn.textContent = isBooked ? '✓' : '!';
+      // insert before toggle
+      hdr.insertBefore(btn, hdr.querySelector('.tl-toggle'));
+      btn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        var booked = localStorage.getItem(this.dataset.key) === '1';
+        if (booked) {
+          localStorage.removeItem(this.dataset.key);
+          this.classList.remove('booked');
+          this.textContent = '!';
+          this.title = '尚未訂票，點擊確認';
+        } else {
+          localStorage.setItem(this.dataset.key, '1');
+          this.classList.add('booked');
+          this.textContent = '✓';
+          this.title = '已訂票 ✓';
+        }
+      });
+    }
 
     const body = document.createElement('div');
     body.className = 'tl-body';
@@ -1184,30 +1202,10 @@ days.forEach((day, idx) => {
     if (!html) html = '<div style="padding-top:8px;color:var(--dim)">—</div>';
 
     body.innerHTML = html;
-    hdr.addEventListener('click', e => {
-      if (e.target.closest('.book-btn')) return; // 不觸發展開
+    hdr.addEventListener('click', function(e) {
+      if (e.target.closest && e.target.closest('.book-btn')) return;
       card.classList.toggle('collapsed');
     });
-    // 訂票按鈕 toggle
-    const bookBtn = hdr.querySelector('.book-btn');
-    if (bookBtn) {
-      bookBtn.addEventListener('click', e => {
-        e.stopPropagation();
-        const key = bookBtn.dataset.key;
-        const booked = localStorage.getItem(key) === '1';
-        if (booked) {
-          localStorage.removeItem(key);
-          bookBtn.classList.remove('booked');
-          bookBtn.textContent = '📌';
-          bookBtn.title = '尚未訂票，點擊確認';
-        } else {
-          localStorage.setItem(key, '1');
-          bookBtn.classList.add('booked');
-          bookBtn.textContent = '✓';
-          bookBtn.title = '已訂票 ✓';
-        }
-      });
-    }
     card.appendChild(hdr); card.appendChild(body);
     wrap.appendChild(dot); wrap.appendChild(card);
     tl.appendChild(wrap);
