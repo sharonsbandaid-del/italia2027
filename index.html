@@ -1099,6 +1099,18 @@ days.forEach((day, idx) => {
 
     const dot  = document.createElement('div'); dot.className  = 'tl-dot';
     const card = document.createElement('div'); card.className = 'tl-card collapsed';
+    // 直接設定底色，避免 CSS 優先級問題
+    const TYPE_BG = {
+      transport: 'rgba(255,255,255,0.92)',
+      train:     'rgba(255,255,255,0.92)',
+      boat:      'rgba(255,255,255,0.92)',
+      car:       'rgba(255,255,255,0.92)',
+      walk:      'rgba(255,255,255,0.92)',
+      attraction:'rgba(255,228,77,0.93)',
+      restaurant:'rgba(255,182,215,0.93)',
+      hotel:     'rgba(186,228,255,0.93)',
+    };
+    if (TYPE_BG[item.type]) card.style.background = TYPE_BG[item.type];
 
     const hdr = document.createElement('div');
     hdr.className = 'tl-header';
