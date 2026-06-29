@@ -1211,7 +1211,7 @@ days.forEach((day, idx) => {
     tl.appendChild(wrap);
 
     if (item.type === 'hotel' && item.stayKey && !item._ci) {
-      requestAnimationFrame(() => wireHotel(body, item.stayKey));
+      wireHotel(body, item.stayKey);
     }
   });
 
